@@ -1,37 +1,33 @@
-# Trash, Mediocre, Above average, Fabled, Mythical, Ancient, Whimsical, Omnipotent
+#Trash, Mediocre, Above average, Fabled, Mythical, Ancient, Whimsical, Omnipotent
 
 #Import necessary libraries
 import random  #For random selection based on weighted probabilities
 import time    #To control the timing of the spinning and pauses
 import os      #Optional, for clearing the screen 
 
-#Step 1: Define the categories and their corresponding probabilities
-categories = [
-    ("Trash", 50.0),       #Trash has a 50% chance of being chosen
-    ("Mediocre", 28.0),    #Mediocre has a 28% chance of being chosen
-    ("Above Average", 12.0), #Above Average" has a 12% chance
-    ("Fabled", 6.5),       # Fabled" has a 6.5% chance
-    ("Mythical", 2.6),     #Mythical" has a 2.6% chance
-    ("Ancient", 0.9),      #Ancient" has a 0.9% chance
-    ("Whimsical", 0.8),    #Whimsical" has a 0.8% chance
-    ("Omnipotent", 0.1)    #Omnipotent" has a 0.1% chance
-]
 
-#Step 2: Separate category names and probabilities
+categories = [
+    ("Trash", 50.0),       
+    ("Mediocre", 28.0),    
+    ("Above Average", 12.0), 
+    ("Fabled", 6.5),      
+    ("Mythical", 2.6),     
+    ("Ancient", 0.9),      
+    ("Whimsical", 0.8),    
+    ("Omnipotent", 0.1)    
+]
 category_names, probabilities = zip(*categories)
 
 
-#Step 3: Define the function to simulate the "spin" and select a category
 def spin_wheel():
     #Step 4: Prompt the user to press enter to spin
     print("Click enter to Spin...")
     input()  #Wait for the user to press Enter
 
-    #Step 5: Simulate the spinning effect by flashing through categories
     print("\nSpinning...", end="")  #Initial message for spinning
     for _ in range(3):  #Loop to simulate the spinning, flashing the categories
         for category in category_names:  #Loop through each category
-            print(f"\r{category}", end="", flush=True)  # verwrite the previous category
+            print(f"\r{category}", end="", flush=True)  
             time.sleep(0.1)  #Pause briefly to create the flashing effect
 
     #After flashing, display a message saying it's "selecting"
@@ -41,8 +37,5 @@ def spin_wheel():
     # Step 6: Randomly select a category based on the defined probabilities
     chosen_category = random.choices(category_names, probabilities)[0]  # Select one category based on weights
     
-    #Step 7: Show the result
     print(f"\nCongrats! You got: {chosen_category}")
-
-#Step 8: Call the function to start the spin
 spin_wheel()
