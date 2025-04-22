@@ -1,9 +1,6 @@
-#Trash, Mediocre, Above average, Fabled, Mythical, Ancient, Whimsical, Omnipotent
-
-#Import necessary libraries
-import random  #For random selection based on weighted probabilities
-import time    #To control the timing of the spinning and pauses
-import os      #Optional, for clearing the screen 
+import random 
+import time
+import os
 
 
 categories = [
@@ -20,22 +17,19 @@ category_names, probabilities = zip(*categories)
 
 
 def spin_wheel():
-    #Step 4: Prompt the user to press enter to spin
     print("Click enter to Spin...")
-    input()  #Wait for the user to press Enter
+    input() # Wait for user input 
 
-    print("\nSpinning...", end="")  #Initial message for spinning
-    for _ in range(3):  #Loop to simulate the spinning, flashing the categories
-        for category in category_names:  #Loop through each category
+    print("\nSpinning...", end="") 
+    for _ in range(3): 
+        for category in category_names: 
             print(f"\r{category}", end="", flush=True)  
-            time.sleep(0.1)  #Pause briefly to create the flashing effect
+            time.sleep(0.1)
 
-    #After flashing, display a message saying it's "selecting"
     print("\r...Selecting...", end="", flush=True)
-    time.sleep(0.5)  # Wait briefly before the final choice
+    time.sleep(0.5)
 
-    # Step 6: Randomly select a category based on the defined probabilities
-    chosen_category = random.choices(category_names, probabilities)[0]  # Select one category based on weights
+    chosen_category = random.choices(category_names, probabilities)[0]
     
     print(f"\nCongrats! You got: {chosen_category}")
 spin_wheel()
